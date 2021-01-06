@@ -12,6 +12,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.OpenApi.Models;
+using RestApiHomework.Asp.Net.data;
+using Microsoft.EntityFrameworkCore;
 
 namespace RestApiHomework.Asp.Net
 {
@@ -27,28 +29,15 @@ namespace RestApiHomework.Asp.Net
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<VegetableService>();
-            services.AddSingleton<FruitService>();
-            services.AddSingleton<DishService>();
+            var connectionString = Configuration.GetConnectionString("DefaultConnection");
+            services.AddTransient<VegetableService>();
+            services.AddTransient<FruitService>();
+            services.AddTransient<DishService>();
+            services.AddDbContext<MainContext>(o => o.UseSqlServer(connectionString));
             services.AddControllers();
 
-            // Register the Swagger Generator service. This service is responsible for genrating Swagger Documents.
-            // Note: Add this service at the end after AddMvc() or AddMvcCore().
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "Zomato API",
-                    Version = "v1",
-                    Description = "Description for the API goes here.",
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Ankush Jain",
-                        Email = string.Empty,
-                        Url = new Uri("https://coderjony.com/"),
-                    },
-                });
-            });
+            services.AddSwaggerGen();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,20 +48,14 @@ namespace RestApiHomework.Asp.Net
                 app.UseDeveloperExceptionPage();
             }
 
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
+            app.UseHttpsRedirection();
+
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Zomato API V1");
-
-                // To serve SwaggerUI at application's root page, set the RoutePrefix property to an empty string.
-                c.RoutePrefix = string.Empty;
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 

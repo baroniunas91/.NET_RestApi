@@ -1,4 +1,5 @@
-﻿using RestApiHomework.Asp.Net.Models;
+﻿using RestApiHomework.Asp.Net.data;
+using RestApiHomework.Asp.Net.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,48 +7,47 @@ namespace RestApiHomework.Asp.Net.Services
 {
     public class VegetableService
     {
-        private List<Vegetable> Vegetables = new List<Vegetable>();
-        public int number { get; set; } = 0;
+        private readonly MainContext _context;
 
+        public VegetableService(MainContext context)
+        {
+            _context = context;
+        }
         public List<Vegetable> GetAll()
         {
-            return Vegetables;
+            var vegetables = _context.Vegetables.OrderBy(x => x.Id).ToList();
+            return vegetables;
         }
 
         public Vegetable Get(int id)
         {
-            Vegetable requestedVegetable = null;
-            foreach (var vegetable in Vegetables)
-            {
-                if(vegetable.Id == id)
-                {
-                    requestedVegetable = vegetable;
-                }
-            }
-            return requestedVegetable;
+            var vegetable = _context.Vegetables.Where(i => i.Id == id).SingleOrDefault();
+            return vegetable;
         }
 
         public void AddItem(Vegetable vegetable)
         {
-            number += 1;
-            vegetable.Id = number;
-            Vegetables.Add(vegetable);
+            _context.Vegetables.Add(vegetable);
+            _context.SaveChanges();
         }
 
         public void UpdateItem(Vegetable vegetable)
         {
-            foreach (var value in Vegetables)
+            foreach (var value in _context.Vegetables)
             {
                 if (value.Id == vegetable.Id)
                 {
                     value.Name = vegetable.Name;
                 }
             }
+            _context.SaveChanges();
         }
 
         public void DeleteItem(int id)
         {
-            Vegetables = Vegetables.Where(i => i.Id != id).ToList();
+            var vegetable = _context.Vegetables.Where(i => i.Id == id).SingleOrDefault();
+            _context.Vegetables.Remove(vegetable);
+            _context.SaveChanges();
         }
     }
 }

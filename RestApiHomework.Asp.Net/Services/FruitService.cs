@@ -1,4 +1,5 @@
-﻿using RestApiHomework.Asp.Net.Models;
+﻿using RestApiHomework.Asp.Net.data;
+using RestApiHomework.Asp.Net.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,48 +7,47 @@ namespace RestApiHomework.Asp.Net.Services
 {
     public class FruitService
     {
-        private List<Fruit> Fruits = new List<Fruit>();
-        public int number { get; set; } = 0;
+        public FruitService(MainContext context)
+        {
+            _context = context;
+        }
+        private readonly MainContext _context;
 
         public List<Fruit> GetAll()
         {
-            return Fruits;
+            var fruits = _context.Fruits.OrderBy(x => x.Id).ToList();
+            return fruits;
         }
 
         public Fruit Get(int id)
         {
-            Fruit requestedFruit = null;
-            foreach (var fruit in Fruits)
-            {
-                if (fruit.Id == id)
-                {
-                    requestedFruit = fruit;
-                }
-            }
-            return requestedFruit;
+            var fruit = _context.Fruits.Where(i => i.Id == id).SingleOrDefault();
+            return fruit;
         }
 
         public void AddItem(Fruit fruit)
         {
-            number += 1;
-            fruit.Id = number;
-            Fruits.Add(fruit);
+            _context.Fruits.Add(fruit);
+            _context.SaveChanges();
         }
 
         public void UpdateItem(Fruit fruit)
         {
-            foreach (var value in Fruits)
+            foreach (var value in _context.Fruits)
             {
                 if (value.Id == fruit.Id)
                 {
                     value.Name = fruit.Name;
                 }
             }
+            _context.SaveChanges();
         }
 
         public void DeleteItem(int id)
         {
-            Fruits = Fruits.Where(i => i.Id != id).ToList();
+            var fruit = _context.Fruits.Where(i => i.Id == id).SingleOrDefault();
+            _context.Fruits.Remove(fruit);
+            _context.SaveChanges();
         }
     }
 }
