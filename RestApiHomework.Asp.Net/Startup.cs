@@ -1,17 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using RestApiHomework.Asp.Net.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.OpenApi.Models;
 using RestApiHomework.Asp.Net.data;
 using Microsoft.EntityFrameworkCore;
 
@@ -30,14 +22,10 @@ namespace RestApiHomework.Asp.Net
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddTransient<VegetableService>();
-            services.AddTransient<FruitService>();
-            services.AddTransient<DishService>();
             services.AddDbContext<MainContext>(o => o.UseSqlServer(connectionString));
+            services.AddScoped(typeof(IItemService<>), typeof(ItemService<>));
             services.AddControllers();
-
             services.AddSwaggerGen();
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

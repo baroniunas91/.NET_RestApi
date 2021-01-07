@@ -3,10 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RestApiHomework.Asp.Net.Models
 {
-    public class Vegetable
+    public class Vegetable : Item
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }

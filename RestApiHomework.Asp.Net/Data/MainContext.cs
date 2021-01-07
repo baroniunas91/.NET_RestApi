@@ -10,7 +10,9 @@ namespace RestApiHomework.Asp.Net.data
 {
     public class MainContext : DbContext
     {
-
+        public DbSet<Dish> Dishes { get; set; }
+        public DbSet<Fruit> Fruits { get; set; }
+        public DbSet<Vegetable> Vegetables { get; set; }
         public MainContext(DbContextOptions<MainContext> options) : base(options)
         {
             if(!Dishes.Any())
@@ -64,8 +66,5 @@ namespace RestApiHomework.Asp.Net.data
                 SaveChanges();
             }
         }
-        public DbSet<Dish> Dishes { get; set; }
-        public DbSet<Fruit> Fruits { get; set; }
-        public DbSet<Vegetable> Vegetables { get; set; }
     }
 }
