@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RestApiHomework.Asp.Net.Models
 {
-    public class Item
+    public abstract class Item
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

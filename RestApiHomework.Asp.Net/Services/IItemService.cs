@@ -1,20 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RestApiHomework.Asp.Net.Models;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace RestApiHomework.Asp.Net.Services
 {
     public interface IItemService<T> where T : Item
     {
         DbContext Context { get; set; }
-        T Get(int id);
+        Task<T> Get(int id);
 
-        List<T> GetAll();
+        Task<List<T>> GetAll();
 
-        void AddItem(T item);
+        Task AddItem(T item);
 
-        void DeleteItem(int id);
+        Task DeleteItem(int id);
 
-        void UpdateItem(T t);
+        Task UpdateItem(T t);
     }
 }

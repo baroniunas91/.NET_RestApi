@@ -2,31 +2,32 @@
 using RestApiHomework.Asp.Net.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RestApiHomework.Asp.Net.Services
 {
     public class ItemService<T> : IItemService<T> where T : Item
     {
         public DbContext Context { get; set; }
-        public List<T> GetAll()
+        public async Task<List<T>> GetAll()
         {
-            var items = Context.Set<T>().OrderBy(x => x.Id).ToList();
+            var items = await Context.Set<T>().OrderBy(x => x.Id).ToListAsync();
             return items;
         }
 
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            var item = Context.Set<T>().Where(i => i.Id == id).SingleOrDefault();
+            var item = await Context.Set<T>().Where(i => i.Id == id).SingleOrDefaultAsync();
             return item;
         }
 
-        public void AddItem(T item)
+        public async Task AddItem(T item)
         {
             Context.Set<T>().Add(item);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
         }
 
-        public void UpdateItem(T item)
+        public async Task UpdateItem(T item)
         {
             foreach (var value in Context.Set<T>())
             {
@@ -35,14 +36,14 @@ namespace RestApiHomework.Asp.Net.Services
                     value.Name = item.Name;
                 }
             }
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
         }
 
-        public void DeleteItem(int id)
+        public async Task DeleteItem(int id)
         {
             var item = Context.Set<T>().Where(i => i.Id == id).SingleOrDefault();
             Context.Set<T>().Remove(item);
-            Context.SaveChanges();
+            await Context.SaveChangesAsync();
         }
     }
 }

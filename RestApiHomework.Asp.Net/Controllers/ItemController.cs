@@ -4,6 +4,7 @@ using RestApiHomework.Asp.Net.Models;
 using RestApiHomework.Asp.Net.Services;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace RestApiHomework.Asp.Net.Controllers
 {
@@ -20,33 +21,33 @@ namespace RestApiHomework.Asp.Net.Controllers
             _itemService.Context = context;
         }
         [HttpGet]
-        public List<T> Get()
+        public async Task<List<T>> Get()
         {
-            return _itemService.GetAll();
+            return await _itemService.GetAll();
         }
 
         [HttpGet("{id}")]
-        public T Get(int id)
+        public async Task<T> Get(int id)
         {
-            return _itemService.Get(id);
+            return await _itemService.Get(id);
         }
 
         [HttpPost]
-        public void Post(T item)
+        public async Task Post(T item)
         {
-            _itemService.AddItem(item);
+            await _itemService.AddItem(item);
         }
 
         [HttpPut]
-        public void Put(T item)
+        public async Task Put(T item)
         {
-            _itemService.UpdateItem(item);
+            await _itemService.UpdateItem(item);
         }
 
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task Delete(int id)
         {
-            _itemService.DeleteItem(id);
+            await _itemService.DeleteItem(id);
         }
     }
 }
