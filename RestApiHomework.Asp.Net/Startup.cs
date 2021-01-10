@@ -3,9 +3,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using RestApiHomework.Asp.Net.Services;
 using RestApiHomework.Asp.Net.data;
 using Microsoft.EntityFrameworkCore;
+using RestApiHomework.Asp.Net.Repositories;
+using RestApiHomework.Asp.Net.Services;
 
 namespace RestApiHomework.Asp.Net
 {
@@ -23,7 +24,9 @@ namespace RestApiHomework.Asp.Net
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<MainContext>(o => o.UseSqlServer(connectionString));
-            services.AddScoped(typeof(IItemService<>), typeof(ItemService<>));
+            services.AddScoped(typeof(IItemRepository<>), typeof(ItemRepository<>));
+            services.AddScoped<IBoughtItemsRepository, BoughtItemsRepository>();
+            services.AddTransient<CalculationService>();
             services.AddControllers();
             services.AddSwaggerGen();
         }

@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestApiHomework.Asp.Net.data;
 using RestApiHomework.Asp.Net.Models;
-using RestApiHomework.Asp.Net.Services;
+using RestApiHomework.Asp.Net.Repositories;
 
 namespace RestApiHomework.Asp.Net.Controllers
 {
@@ -10,7 +10,7 @@ namespace RestApiHomework.Asp.Net.Controllers
 
     public class VegetableController : ItemController<Vegetable>
     {
-        public VegetableController(IItemService<Vegetable> itemService, MainContext context) : base(itemService, context)
+        public VegetableController(IItemRepository<Vegetable> itemRepository) : base(itemRepository)
         {
         }
     }

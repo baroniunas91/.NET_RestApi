@@ -9,9 +9,10 @@ namespace RestApiHomework.Asp.Net.data
         public DbSet<Dish> Dishes { get; set; }
         public DbSet<Fruit> Fruits { get; set; }
         public DbSet<Vegetable> Vegetables { get; set; }
+        public DbSet<BoughtItem> BoughtItems { get; set; }
         public MainContext(DbContextOptions<MainContext> options) : base(options)
         {
-            if(!Dishes.Any())
+            if (!Dishes.Any())
             {
                 Dishes.Add(new Dish()
                 {

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestApiHomework.Asp.Net.data;
 using RestApiHomework.Asp.Net.Models;
-using RestApiHomework.Asp.Net.Services;
-using System.Collections.Generic;
+using RestApiHomework.Asp.Net.Repositories;
 
 namespace RestApiHomework.Asp.Net.Controllers
 {
@@ -11,7 +10,7 @@ namespace RestApiHomework.Asp.Net.Controllers
 
     public class FruitController : ItemController<Fruit>
     {
-        public FruitController(IItemService<Fruit> itemService, MainContext context) : base(itemService, context)
+        public FruitController(IItemRepository<Fruit> itemRepository) : base(itemRepository)
         {
         }
     }

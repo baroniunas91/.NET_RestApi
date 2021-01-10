@@ -1,9 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using RestApiHomework.Asp.Net.data;
 using RestApiHomework.Asp.Net.Models;
-using RestApiHomework.Asp.Net.Services;
+using RestApiHomework.Asp.Net.Repositories;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace RestApiHomework.Asp.Net.Controllers
@@ -13,41 +12,40 @@ namespace RestApiHomework.Asp.Net.Controllers
 
     public abstract class ItemController<T> : ControllerBase where T : Item
     {
-        private readonly IItemService<T> _itemService;
+        private readonly IItemRepository<T> _itemRepository;
 
-        public ItemController(IItemService<T> itemService, MainContext context)
+        public ItemController(IItemRepository<T> itemRepository)
         {
-            _itemService = itemService;
-            _itemService.Context = context;
+            _itemRepository = itemRepository;
         }
         [HttpGet]
         public async Task<List<T>> Get()
         {
-            return await _itemService.GetAll();
+            return await _itemRepository.GetAll();
         }
 
         [HttpGet("{id}")]
         public async Task<T> Get(int id)
         {
-            return await _itemService.Get(id);
+            return await _itemRepository.Get(id);
         }
 
         [HttpPost]
         public async Task Post(T item)
         {
-            await _itemService.AddItem(item);
+            await _itemRepository.AddItem(item);
         }
 
         [HttpPut]
         public async Task Put(T item)
         {
-            await _itemService.UpdateItem(item);
+            await _itemRepository.UpdateItem(item);
         }
 
         [HttpDelete("{id}")]
         public async Task Delete(int id)
         {
-            await _itemService.DeleteItem(id);
+            await _itemRepository.DeleteItem(id);
         }
     }
 }
