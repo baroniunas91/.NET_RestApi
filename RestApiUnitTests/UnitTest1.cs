@@ -8,7 +8,7 @@ using System;
 using System.Collections.Generic;
 using Xunit;
 
-namespace XUnitTestProject2
+namespace RestApiUnitTests
 {
     public class UnitTest1
     {
