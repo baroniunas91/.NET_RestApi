@@ -32,7 +32,6 @@ namespace RestApiHomework.Asp.Net.Repositories
                 _context.BoughtItems.Add(boughtItem);
                 _context.SaveChanges();
             }
-            
         }
         public List<BoughtItem> GetBoughtItems()
         {

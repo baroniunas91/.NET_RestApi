@@ -46,7 +46,7 @@ namespace RestApiUnitTests
         [Fact]
         public void ShopControllerTest()
         {
-            var mockBoughtItemsRepository = new Mock<IBoughtItemsRepository>();
+            var mockBoughtItemsRepository = new Mock<IBoughtItemsRepository<Dish>>();
 
             mockBoughtItemsRepository.Setup(m => m.GetBoughtItems()).Returns(new List<BoughtItem>()
             {
