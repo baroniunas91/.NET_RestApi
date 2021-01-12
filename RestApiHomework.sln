@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestApiHomework.Asp.Net", "RestApiHomework.Asp.Net\RestApiHomework.Asp.Net.csproj", "{320EC5C4-CC80-4B7A-A08A-AF716494D5F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject2", "XUnitTestProject2\XUnitTestProject2.csproj", "{91C522D9-20E3-4E5A-8027-01E4EE21DC53}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestApiUnitTests", "RestApiUnitTests\RestApiUnitTests.csproj", "{FF10DFB3-DE7B-4EEA-B119-08C0C8B2F2AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{320EC5C4-CC80-4B7A-A08A-AF716494D5F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{320EC5C4-CC80-4B7A-A08A-AF716494D5F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{320EC5C4-CC80-4B7A-A08A-AF716494D5F1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{91C522D9-20E3-4E5A-8027-01E4EE21DC53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{91C522D9-20E3-4E5A-8027-01E4EE21DC53}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{91C522D9-20E3-4E5A-8027-01E4EE21DC53}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{91C522D9-20E3-4E5A-8027-01E4EE21DC53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF10DFB3-DE7B-4EEA-B119-08C0C8B2F2AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF10DFB3-DE7B-4EEA-B119-08C0C8B2F2AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF10DFB3-DE7B-4EEA-B119-08C0C8B2F2AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF10DFB3-DE7B-4EEA-B119-08C0C8B2F2AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -44,7 +44,7 @@ namespace XUnitTestProject2
         }
 
         [Fact]
-        public void FirstControllerTest()
+        public void ShopControllerTest()
         {
             var mockBoughtItemsRepository = new Mock<IBoughtItemsRepository>();
 
