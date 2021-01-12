@@ -30,16 +30,18 @@ namespace RestApiHomework.Asp.Net.Services
 
         public BoughtItem ApplyDiscount(BoughtItem item, Item itemWantToBuy)
         {
-            if(item.Quantity >= 5 && item.Quantity < 10)
+            if (item.Quantity >= 5 && item.Quantity < 10)
             {
                 item.Discount = 10;
                 item.Price = itemWantToBuy.Price * (100 - item.Discount) / 100;
 
-            } else if(item.Quantity >= 10)
+            }
+            else if (item.Quantity >= 10)
             {
                 item.Discount = 20;
                 item.Price = itemWantToBuy.Price * (100 - item.Discount) / 100;
-            } else
+            }
+            else
             {
                 item.Discount = 0;
                 item.Price = itemWantToBuy.Price;
@@ -50,6 +52,9 @@ namespace RestApiHomework.Asp.Net.Services
         {
             item.TotalPrice = item.Quantity * item.Price;
             return item;
+        }
+        public void kazkas(BoughtItem item, Item itemWantToBuy)
+        {
         }
     }
 }
