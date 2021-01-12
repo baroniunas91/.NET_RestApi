@@ -53,8 +53,5 @@ namespace RestApiHomework.Asp.Net.Services
             item.TotalPrice = item.Quantity * item.Price;
             return item;
         }
-        public void kazkas(BoughtItem item, Item itemWantToBuy)
-        {
-        }
     }
 }
