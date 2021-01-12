@@ -12,7 +12,6 @@ namespace RestApiHomework.Asp.Net.Models
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string Type { get; set; }
         public string Name { get; set; }
         public decimal? Price { get; set; } = 2;
         public int? Quantity { get; set; } = 100;

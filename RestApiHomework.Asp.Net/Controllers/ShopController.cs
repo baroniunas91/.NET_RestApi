@@ -16,7 +16,7 @@ namespace RestApiHomework.Asp.Net.Controllers
             _boughtItemsRepository = boughtItemsRepository;
         }
 
-        [HttpPost]
+        [HttpPost("{id}")]
         public void BuyItem(BoughtItem item)
         {
             _boughtItemsRepository.BuyItem(item);

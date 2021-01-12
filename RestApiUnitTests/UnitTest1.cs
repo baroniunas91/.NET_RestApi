@@ -52,7 +52,6 @@ namespace RestApiUnitTests
             {
                 new BoughtItem()
                 {
-                    Type = "Dishes",
                     Name = "Plate",
                     Price = 2,
                     Quantity = 3,
@@ -61,7 +60,6 @@ namespace RestApiUnitTests
                 },
                 new BoughtItem()
                 {
-                    Type = "Dishes",
                     Name = "Knife",
                     Price = 2,
                     Quantity = 3,

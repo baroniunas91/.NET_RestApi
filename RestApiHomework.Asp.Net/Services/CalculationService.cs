@@ -6,27 +6,27 @@ namespace RestApiHomework.Asp.Net.Services
 {
     public class CalculationService
     {
-        public Item GetRequestedItem(BoughtItem boughtItem, MainContext context)
-        {
-            Item itemWantToBuy = null;
-            if (boughtItem.Type == "Dishes")
-            {
-                itemWantToBuy = context.Dishes.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
-            }
-            else if (boughtItem.Type == "Fruits")
-            {
-                itemWantToBuy = context.Fruits.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
-            }
-            else if (boughtItem.Type == "Vegetables")
-            {
-                itemWantToBuy = context.Vegetables.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
-            }
-            if (itemWantToBuy != null)
-            {
-                boughtItem.Name = itemWantToBuy.Name;
-            }
-            return itemWantToBuy;
-        }
+        //public Item GetRequestedItem(BoughtItem boughtItem, MainContext context)
+        //{
+        //    Item itemWantToBuy = null;
+        //    if (boughtItem.Type == "Dishes")
+        //    {
+        //        itemWantToBuy = context.Dishes.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
+        //    }
+        //    else if (boughtItem.Type == "Fruits")
+        //    {
+        //        itemWantToBuy = context.Fruits.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
+        //    }
+        //    else if (boughtItem.Type == "Vegetables")
+        //    {
+        //        itemWantToBuy = context.Vegetables.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
+        //    }
+        //    if (itemWantToBuy != null)
+        //    {
+        //        boughtItem.Name = itemWantToBuy.Name;
+        //    }
+        //    return itemWantToBuy;
+        //}
 
         public BoughtItem ApplyDiscount(BoughtItem item, Item itemWantToBuy)
         {
