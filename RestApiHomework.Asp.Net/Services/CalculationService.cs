@@ -1,32 +1,27 @@
 ﻿using RestApiHomework.Asp.Net.data;
 using RestApiHomework.Asp.Net.Models;
+using System;
 using System.Linq;
 
 namespace RestApiHomework.Asp.Net.Services
 {
     public class CalculationService
     {
-        //public Item GetRequestedItem(BoughtItem boughtItem, MainContext context)
-        //{
-        //    Item itemWantToBuy = null;
-        //    if (boughtItem.Type == "Dishes")
-        //    {
-        //        itemWantToBuy = context.Dishes.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
-        //    }
-        //    else if (boughtItem.Type == "Fruits")
-        //    {
-        //        itemWantToBuy = context.Fruits.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
-        //    }
-        //    else if (boughtItem.Type == "Vegetables")
-        //    {
-        //        itemWantToBuy = context.Vegetables.Where(i => i.Name == boughtItem.Name).SingleOrDefault();
-        //    }
-        //    if (itemWantToBuy != null)
-        //    {
-        //        boughtItem.Name = itemWantToBuy.Name;
-        //    }
-        //    return itemWantToBuy;
-        //}
+        public BoughtItem ApplyName(BoughtItem item, Item itemWantToBuy)
+        {
+            if (itemWantToBuy != null)
+            {
+                item.Name = itemWantToBuy.Name;
+                return item;
+            }
+            return null;
+        }
+
+        public BoughtItem ApplyQuantity(BoughtItem item, int qty)
+        {
+            item.Quantity = qty;
+            return item;
+        }
 
         public BoughtItem ApplyDiscount(BoughtItem item, Item itemWantToBuy)
         {

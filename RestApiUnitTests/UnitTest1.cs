@@ -68,7 +68,7 @@ namespace RestApiUnitTests
                 }
             });
 
-            var shopController = new ShopController(mockBoughtItemsRepository.Object);
+            var shopController = new ShopDishController(mockBoughtItemsRepository.Object);
 
             shopController.GetBoughtItems().Should().HaveCount(2);
         }

@@ -1,18 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestApiHomework.Asp.Net.data;
 using RestApiHomework.Asp.Net.Models;
 using RestApiHomework.Asp.Net.Repositories;
+using System.Collections.Generic;
 
 namespace RestApiHomework.Asp.Net.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-
-    public class VegetableController : ItemController<Vegetable>
+    public class ShopFruitController : ShopItemController<Fruit>
     {
-        public VegetableController(IItemRepository<Vegetable> itemRepository) : base(itemRepository)
+
+        public ShopFruitController(IBoughtItemsRepository<Fruit> boughtItemsRepository) : base(boughtItemsRepository)
         {
         }
     }
 }
-

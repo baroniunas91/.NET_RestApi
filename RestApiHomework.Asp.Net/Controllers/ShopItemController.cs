@@ -7,19 +7,19 @@ namespace RestApiHomework.Asp.Net.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ShopController : ControllerBase
+    public abstract class ShopItemController<T> : ControllerBase where T : Item
     {
-        private readonly IBoughtItemsRepository _boughtItemsRepository;
+        private readonly IBoughtItemsRepository<T> _boughtItemsRepository;
 
-        public ShopController(IBoughtItemsRepository boughtItemsRepository)
+        public ShopItemController(IBoughtItemsRepository<T> boughtItemsRepository)
         {
             _boughtItemsRepository = boughtItemsRepository;
         }
 
-        [HttpPost("{id}")]
-        public void BuyItem(BoughtItem item)
+        [HttpPost("{id}/{qty}")]
+        public void BuyItem(T item, int id, int qty)
         {
-            _boughtItemsRepository.BuyItem(item);
+            _boughtItemsRepository.BuyItem(item, id, qty);
         }
         [HttpGet]
         public List<BoughtItem> GetBoughtItems()
