@@ -24,7 +24,7 @@ namespace RestApiHomework.Asp.Net
         public void ConfigureServices(IServiceCollection services)
         {
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
-            services.AddDbContext<MainContext>(o => o.UseSqlServer(connectionString));
+            services.AddDbContext<MainContext>(o => o.UseInMemoryDatabase(connectionString));
             services.AddScoped(typeof(IItemRepository<>), typeof(ItemRepository<>));
             services.AddScoped(typeof(IBoughtItemsRepository<>), typeof(BoughtItemsRepository<>));
             services.AddTransient<CalculationService>();
