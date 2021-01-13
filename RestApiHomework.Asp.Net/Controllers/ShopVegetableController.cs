@@ -9,7 +9,6 @@ namespace RestApiHomework.Asp.Net.Controllers
     [Route("[controller]")]
     public class ShopVegetableController : ShopItemController<Vegetable>
     {
-
         public ShopVegetableController(IBoughtItemsRepository<Vegetable> boughtItemsRepository) : base(boughtItemsRepository)
         {
         }

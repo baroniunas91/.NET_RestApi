@@ -7,6 +7,7 @@ using RestApiHomework.Asp.Net.data;
 using Microsoft.EntityFrameworkCore;
 using RestApiHomework.Asp.Net.Repositories;
 using RestApiHomework.Asp.Net.Services;
+using AutoMapper;
 
 namespace RestApiHomework.Asp.Net
 {
@@ -27,6 +28,7 @@ namespace RestApiHomework.Asp.Net
             services.AddScoped(typeof(IItemRepository<>), typeof(ItemRepository<>));
             services.AddScoped(typeof(IBoughtItemsRepository<>), typeof(BoughtItemsRepository<>));
             services.AddTransient<CalculationService>();
+            services.AddAutoMapper(typeof(Startup));
             services.AddControllers();
             services.AddSwaggerGen();
         }

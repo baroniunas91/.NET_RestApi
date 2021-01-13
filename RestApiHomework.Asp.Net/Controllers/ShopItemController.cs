@@ -15,11 +15,18 @@ namespace RestApiHomework.Asp.Net.Controllers
         {
             _boughtItemsRepository = boughtItemsRepository;
         }
-
         [HttpPost("{id}/{qty}")]
-        public void BuyItem(T item, int id, int qty)
+        public ActionResult BuyItem(T item, int id, int qty)
         {
-            _boughtItemsRepository.BuyItem(item, id, qty);
+            try
+            {
+                _boughtItemsRepository.BuyItem(item, id, qty);
+                return Ok();
+            }
+            catch (System.Exception)
+            {
+                return new NoContentResult();
+            }
         }
         [HttpGet]
         public List<BoughtItem> GetBoughtItems()
