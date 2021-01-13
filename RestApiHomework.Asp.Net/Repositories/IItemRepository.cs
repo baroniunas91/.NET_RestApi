@@ -1,9 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using RestApiHomework.Asp.Net.Models;
-using System;
+﻿using RestApiHomework.Asp.Net.Models;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace RestApiHomework.Asp.Net.Repositories

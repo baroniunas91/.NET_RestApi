@@ -1,7 +1,4 @@
-﻿using RestApiHomework.Asp.Net.data;
-using RestApiHomework.Asp.Net.Models;
-using System;
-using System.Linq;
+﻿using RestApiHomework.Asp.Net.Models;
 
 namespace RestApiHomework.Asp.Net.Services
 {

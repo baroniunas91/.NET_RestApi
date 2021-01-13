@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace RestApiHomework.Asp.Net.Models
+﻿namespace RestApiHomework.Asp.Net.Models
 {
     public class Dish : Item
     {

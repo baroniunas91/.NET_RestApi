@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using RestApiHomework.Asp.Net.Models;
+﻿using RestApiHomework.Asp.Net.Models;
 using System.Collections.Generic;
 
 namespace RestApiHomework.Asp.Net.Repositories

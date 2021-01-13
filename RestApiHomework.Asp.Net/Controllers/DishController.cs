@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using RestApiHomework.Asp.Net.data;
 using RestApiHomework.Asp.Net.Models;
 using RestApiHomework.Asp.Net.Repositories;
 
