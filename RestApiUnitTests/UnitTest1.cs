@@ -24,7 +24,7 @@ namespace RestApiUnitTests
             //Act
             calculationService.CalculateTotalPrice(boughtItem);
             //Assert
-            boughtItem.TotalPrice.Should().Be(200);
+            boughtItem.TotalPrice.Should().Be(300);
         }
         [Theory]
         [InlineData(3, 4)]
@@ -33,11 +33,10 @@ namespace RestApiUnitTests
         public void TestApplyDiscount(decimal priceShouldBe, int quantity)
         {
             var boughtItem = new BoughtItem();
-            var itemWantToBuy = new Dish();
             var calculationService = new CalculationService();
 
             boughtItem.Quantity = quantity;
-            calculationService.ApplyDiscount(boughtItem, itemWantToBuy);
+            calculationService.ApplyDiscount(boughtItem);
             boughtItem.Price.Should().Be(priceShouldBe);
         }
 

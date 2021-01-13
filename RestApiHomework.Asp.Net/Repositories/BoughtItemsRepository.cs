@@ -27,7 +27,7 @@ namespace RestApiHomework.Asp.Net.Repositories
             {
                 var boughtItem = _mapper.Map<BoughtItem>(itemWantToBuy);
                 boughtItem.Quantity = qty; 
-                _calculationService.ApplyDiscount(boughtItem, itemWantToBuy);
+                _calculationService.ApplyDiscount(boughtItem);
                 _calculationService.CalculateTotalPrice(boughtItem);
                 _context.BoughtItems.Add(boughtItem);
                 _context.SaveChanges();
